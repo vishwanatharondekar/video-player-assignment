@@ -12,26 +12,33 @@
           <li role="menuitem" class="menu-item" ng-click="filterSport('all')">All Sports</li>
           <li role="menuitem" class="menu-item" ng-click="filterSport('cricket')">Cricket</li>
           <li role="menuitem" class="menu-item" ng-click="filterSport('football')">Football</li>
+          <li role="menuitem" class="menu-item" ng-click="filterSport('basketball')">Basketball</li>
+          <li role="menuitem" class="menu-item" ng-click="filterSport('badminton')">Badminton</li>
+          <li role="menuitem" class="menu-item" ng-click="filterSport('hockey')">Hockey</li>
         </ul>
       </div>
     </div>
     <div style="clear: both;"></div>
   </div>
 
-  <div><h4>May 2016</h4></div>
-  <div>
-    <table>
-      <tr>
-        <th>Date/Time</th>
-        <th>Tournament/Series</th>
-        <th>Match</th>
-      </tr>
-      <tr ng-repeat="match in matches" class="match" ng-click="openVideo(match)">
-        <td class="time">{{timeRepresentation(match.time)}}</td>
-        <td class="tournament"><span class="sport">{{match.sport}}</span><span class="separator">: </span><span>{{match.tournament}}</span></td>
-        <td>{{match.name}}<span ng-class="['live-badge', isLive(match.time)?'' : 'hide']">{{isLive(match.time)?'LIVE':''}}</span></td>
-      </tr>
-    </table>
+  <div class="months-container">
+    <div ng-repeat="(month, monthMatches) in matchesByMonth" class="month-container">
+      <div><h4>{{month}} {{monthMatches.month.year}}</h4></div>
+      <div>
+        <table>
+          <tr>
+            <th>Date/Time</th>
+            <th>Tournament/Series</th>
+            <th>Match</th>
+          </tr>
+          <tr ng-repeat="match in monthMatches.matches" class="match" ng-click="openVideo(match)">
+            <td class="time">{{timeRepresentation(match.time)}}</td>
+            <td class="tournament"><span class="sport">{{match.sport}}</span><span class="separator">: </span><span>{{match.tournament}}</span></td>
+            <td>{{match.name}}<span ng-class="['live-badge', isLive(match.time)?'' : 'hide']">{{isLive(match.time)?'LIVE':''}}</span></td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
 
   <div ng-if="!closed"

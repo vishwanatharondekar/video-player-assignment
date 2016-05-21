@@ -88,45 +88,49 @@ body {
 }
 
 .main-container{
-  table{
-    width:100%;
-    th{
-      border-bottom:1px solid gray;
-      border-top:1px solid gray;
-      line-height: 38px;
-    }
-
-    td.time{
-      width:140px;
-    }
-    td.tournament{
-      width:180px;
-    }
-
-    .match{
-      border-bottom:1px solid gray;
-      cursor: pointer;
-      height: 38px;
-
-      .tournament{
-        .sport{
-          text-transform: capitalize;
-        }
+  .month-container{
+    padding-bottom:50px;
+    table{
+      width:100%;
+      th{
+        border-bottom:1px solid gray;
+        border-top:1px solid gray;
+        line-height: 38px;
       }
 
-      .live-badge{
-        float: right;
-        background: #DB524C;
-        padding-left: 10px;
-        padding-right: 10px;
-        border-radius: 5px;
-        color:white;
-        font-size: 10px;
-        height: 20px;
-        padding-top: 3px;
+      td.time{
+        width:140px;
+      }
+      td.tournament{
+        width:180px;
+      }
+
+      .match{
+        border-bottom:1px solid gray;
+        cursor: pointer;
+        height: 38px;
+
+        .tournament{
+          .sport{
+            text-transform: capitalize;
+          }
+        }
+
+        .live-badge{
+          float: right;
+          background: #DB524C;
+          padding-left: 10px;
+          padding-right: 10px;
+          border-radius: 5px;
+          color:white;
+          font-size: 10px;
+          height: 20px;
+          padding-top: 3px;
+        }
       }
     }
   }
+
 
   .top-bar{
     margin-bottom: 10px;
@@ -153,7 +157,7 @@ body {
 
       .menu-item{
         padding-left: 10px;
-        line-height: 24px;
+        line-height: 28px;
         cursor: pointer;
 
         &:hover{
