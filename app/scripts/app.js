@@ -39,4 +39,4 @@ angular
         return function (recordingUrl) {
             return $sce.trustAsResourceUrl(recordingUrl);
         };
-    }]);;
+    }]);

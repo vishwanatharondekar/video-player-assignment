@@ -28,6 +28,11 @@ angular.module('videoPlayerAssignmentApp')
     $scope.matches = $scope.allMatches;
 
     $scope.openVideo = function (match) {
+      ga('send', {
+        hitType: 'event',
+        eventCategory: 'user-action',
+        eventAction: 'opened-video'
+      });
       $scope.closed = false;
 
       //TODO: decide if we want to open always maximized video
@@ -36,26 +41,40 @@ angular.module('videoPlayerAssignmentApp')
     };
 
     $scope.minimizeVideo = function(){
+      ga('send', {
+        hitType: 'event',
+        eventCategory: 'user-action',
+        eventAction: 'minimized-video'
+      });
       $scope.minimized = true;
       $scope.videoLeftTop = {
         left : ($window.innerWidth - 300 - 20) + "px",
         top : ($window.innerHeight - 220 - 20) + "px",
       };
-
-    }
+    };
 
     $scope.maximizeVideo = function(){
+      ga('send', {
+        hitType: 'event',
+        eventCategory: 'user-action',
+        eventAction: 'maximized-video'
+      });
       $scope.minimized = false;
       $scope.videoLeftTop = {
         left : 0,
         top : 0,
       };
-    }
+    };
 
     $scope.closeVideo = function(){
+      ga('send', {
+        hitType: 'event',
+        eventCategory: 'user-action',
+        eventAction: 'closed-video'
+      });
       $scope.closed = true;
       $scope.maximizeVideo();
-    }
+    };
 
     $scope.filterSport = function(value){
       if(value==='all'){
@@ -66,9 +85,9 @@ angular.module('videoPlayerAssignmentApp')
       }
       $scope.selectedFilterText = value;
       $scope.matches = $scope.allMatches.filter(function(match){
-        return match.sport == value;
-      })
-    }
+        return match.sport === value;
+      });
+    };
 
     $scope.timeRepresentation= function(time){
       time = new Date(time);
@@ -79,18 +98,18 @@ angular.module('videoPlayerAssignmentApp')
       var amPm = hours>=12?'PM':'AM';
       hours = hours % 13;
       return days[time.getDay()] + " " + time.getDate() + ", " + hours + ":" + minutes + " " + amPm;
-    }
+    };
 
     $scope.isLive = function(time){
       var currentDate = new Date();
       time = new Date(time);
       var date = time.getDate();
       var month = time.getMonth();
-      return currentDate.getDate()==date && currentDate.getMonth()==month;
-    }
+      return currentDate.getDate()===date && currentDate.getMonth()===month;
+    };
 
   }).directive("scroll", function ($window) {
-    return function(scope, element, attrs) {
+    return function(scope) {
         angular.element($window).bind("scroll", function() {
             if(!scope.minimized){
               scope.minimizeVideo();
@@ -98,6 +117,6 @@ angular.module('videoPlayerAssignmentApp')
             }
         });
     };
-});;
+});
 
 
