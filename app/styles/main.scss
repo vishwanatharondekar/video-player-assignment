@@ -1,0 +1,243 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+body {
+  padding: 0;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+  /* Make the masthead heading the same height as the navigation */
+  h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+    padding-bottom: 19px;
+  }
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+
+  .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+  }
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+
+  p + h4 {
+    margin-top: 28px;
+  }
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+.main-container{
+  table{
+    width:100%;
+    th{
+      border-bottom:1px solid gray;
+      border-top:1px solid gray;
+      line-height: 38px;
+    }
+
+    td.time{
+      width:140px;
+    }
+    td.tournament{
+      width:180px;
+    }
+
+    .match{
+      border-bottom:1px solid gray;
+      cursor: pointer;
+      height: 38px;
+
+      .tournament{
+        .sport{
+          text-transform: capitalize;
+        }
+      }
+
+      .live-badge{
+        float: right;
+        background: #DB524C;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 5px;
+        color:white;
+        font-size: 10px;
+        height: 20px;
+        padding-top: 3px;
+      }
+    }
+  }
+
+  .top-bar{
+    margin-bottom: 10px;
+    .schedule-header{
+      float: left;
+      h3{
+        margin-top: 0px;
+      }
+    }
+
+    .sports-filter{
+      float : right;
+      .dropdown-button{
+        background: white;
+        border: 1px solid #CECECE;
+        min-width: 150px;
+        text-align: left;
+        text-transform: capitalize;
+        .caret{
+          float: right;
+          margin-top: 8px;
+        }
+      }
+
+      .menu-item{
+        padding-left: 10px;
+        line-height: 24px;
+        cursor: pointer;
+
+        &:hover{
+          background:gainsboro;
+        }
+      }
+    }
+  }
+
+
+  .video-player{
+
+    position: fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    -webkit-transition:top 2s, left 2s max-width 2s;
+    transition:top 2s, left 2s max-width 2s;
+
+    .my-modal{
+      .my-modal-backdrop{
+        position:absolute;
+        background:white;
+        opacity: 0.8;
+        z-index: 999;
+        top:0;left:0;bottom:0;right:0;
+      }
+
+
+      .my-modal-content{
+        position:absolute;
+        width:100%;
+        z-index: 1000;
+
+        .video-container{
+          width: 500px;
+          max-width:100%;
+          margin:auto;
+
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+
+          video{
+            width: 100%;
+          }
+
+          .video-info-container{
+            background:white;
+            .match-name{
+              font-size: 18px;
+            }
+
+            .tournament-name{
+              font-size: 10px;
+            }
+          }
+
+          .buttons-container{
+            text-align: right;
+          }
+        }
+      }
+    }
+
+    &.minimized{
+      max-width: 300px;
+      height: 200px;
+      .my-modal-backdrop{
+        background:transparent!important;
+      }
+
+      .video-container{
+        position:static!important;
+        transform: none!important;
+        top: inherit!important;
+        left: inherit!important;
+      }
+    }
+  }
+}
+
+
+
+

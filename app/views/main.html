@@ -1,0 +1,60 @@
+<div class="main-container" scroll>
+  <div class="top-bar">
+    <div class="schedule-header">
+      <h3>Schedule</h3>
+    </div>
+    <div class="sports-filter">
+      <div class="btn-group" uib-dropdown is-open="status.isopen">
+        <button class="btn dropdown-button" type="button" uib-dropdown-toggle >
+          {{selectedFilterText}}<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+          <li role="menuitem" class="menu-item" ng-click="filterSport('all')">All Sports</li>
+          <li role="menuitem" class="menu-item" ng-click="filterSport('cricket')">Cricket</li>
+          <li role="menuitem" class="menu-item" ng-click="filterSport('football')">Football</li>
+        </ul>
+      </div>
+    </div>
+    <div style="clear: both;"></div>
+  </div>
+
+  <div><h4>May 2016</h4></div>
+  <div>
+    <table>
+      <tr>
+        <th>Date/Time</th>
+        <th>Tournament/Series</th>
+        <th>Match</th>
+      </tr>
+      <tr ng-repeat="match in matches" class="match" ng-click="openVideo(match)">
+        <td class="time">{{timeRepresentation(match.time)}}</td>
+        <td class="tournament"><span class="sport">{{match.sport}}</span><span class="separator">: </span><span>{{match.tournament}}</span></td>
+        <td>{{match.name}}<span ng-class="['live-badge', isLive(match.time)?'' : 'hide']">{{isLive(match.time)?'LIVE':''}}</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <div ng-if="!closed"
+      ng-class="['video-player', minimized?'minimized' : '']"
+      ng-style="videoLeftTop"
+    >
+    <div class="my-modal">
+      <div class="my-modal-backdrop"></div>
+      <div class="my-modal-content">
+        <div class="video-container">
+          <div class="buttons-container">
+            <button ng-if="!minimized" ng-click="minimizeVideo()">Minimize</button>
+            <button ng-if="minimized" ng-click="maximizeVideo()">Maximize</button>
+            <button ng-click="closeVideo()">Close</button>
+          </div>
+          <video ng-src="{{selectedMatch.video | trustUrl}}" controls style="max-width:100%;" autoplay>
+          </video>
+          <div class="video-info-container">
+            <div class="tournament-name">{{selectedMatch.tournament}}</div>
+            <div class="match-name">{{selectedMatch.name}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
