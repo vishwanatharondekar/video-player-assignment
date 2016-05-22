@@ -33,7 +33,7 @@
           </tr>
           <tr ng-repeat="match in monthMatches.matches" class="match" ng-click="openVideo(match)">
             <td class="time">{{timeRepresentation(match.time)}}</td>
-            <td class="tournament"><span class="sport">{{match.sport}}</span><span class="separator">: </span><span>{{match.tournament}}</span></td>
+            <td class="tournament"><span ng-if="selectedFilter=='all'"><span class="sport">{{match.sport}}</span><span class="separator">: </span> </span><span>{{match.tournament}}</span></td>
             <td>{{match.name}}<span ng-class="['live-badge', isLive(match.time)?'' : 'hide']">{{isLive(match.time)?'LIVE':''}}</span></td>
           </tr>
         </table>
