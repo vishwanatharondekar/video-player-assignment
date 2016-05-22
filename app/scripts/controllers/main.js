@@ -104,6 +104,7 @@ angular.module('videoPlayerAssignmentApp')
         return;
       }
       $scope.selectedFilterText = value;
+      $scope.selectedFilter = value;
       $scope.matches = $scope.allMatches.filter(function(match){
         return match.sport === value;
       });
