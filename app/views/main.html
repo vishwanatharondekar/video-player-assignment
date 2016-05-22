@@ -54,7 +54,7 @@
             <button ng-if="minimized" ng-click="maximizeVideo()">Maximize</button>
             <button ng-click="closeVideo()">Close</button>
           </div>
-          <video ng-src="{{selectedMatch.video | trustUrl}}" controls style="max-width:100%;" autoplay>
+          <video id="match-video" ng-src="{{selectedMatch.video | trustUrl}}" controls style="max-width:100%;" autoplay>
           </video>
           <div class="video-info-container">
             <div class="tournament-name">{{selectedMatch.tournament}}</div>

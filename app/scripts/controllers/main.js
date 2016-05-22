@@ -40,6 +40,10 @@ angular.module('videoPlayerAssignmentApp')
       //TODO: decide if we want to open always maximized video
       //$scope.maximizeVideo();
       $scope.selectedMatch = match;
+      var videoEl = document.getElementById('match-video');
+      if(videoEl){
+        videoEl.currentTime  = 0;
+      }
     };
 
     $scope.minimizeVideo = function(){
@@ -103,6 +107,7 @@ angular.module('videoPlayerAssignmentApp')
         $scope.makeMonthMaps($scope.matches);
         return;
       }
+      $scope.selectedFilter = value;
       $scope.selectedFilterText = value;
       $scope.selectedFilter = value;
       $scope.matches = $scope.allMatches.filter(function(match){
