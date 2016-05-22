@@ -92,10 +92,16 @@ body {
     padding-bottom:50px;
     table{
       width:100%;
+      line-height: 22px;
       th{
+        padding-left:5px;
+        padding-right:5px;
         border-bottom:1px solid gray;
         border-top:1px solid gray;
         line-height: 38px;
+      }
+      td{
+        padding:5px;
       }
 
       td.time{
